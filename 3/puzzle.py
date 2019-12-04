@@ -56,4 +56,4 @@ def pedometer(path, intersection_set):
 
 a = pedometer(path1, intersections)
 b = pedometer(path2, intersections)
-print(min([x + y for x, y in zip(a, b)]))
+print(min([x + y for x, y in zip(a, b)]) + 2)  # 2, in order to account for 0 index
