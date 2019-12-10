@@ -84,6 +84,7 @@ K)YOU
 I)SAN
 Visually, the above map of orbits looks like this:
 
+```
                           YOU
                          /
         G - H       J - K - L
@@ -91,6 +92,8 @@ Visually, the above map of orbits looks like this:
 COM - B - C - D - E - F
                \
                 I - SAN
+```
+
 In this example, YOU are in orbit around K, and SAN is in orbit around I. To move from K to I, a minimum of 4 orbital transfers are required:
 
 K to J
