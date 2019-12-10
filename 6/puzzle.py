@@ -15,7 +15,7 @@ K)L
 COM)B'''.split('\n')
 
 
-def checksum(orbital_map):
+def generate_system(orbital_map):
     out = []
     primary_order = [x.split(')')[0] for x in orbital_map]
     satellite_order = [x.split(')')[1] for x in orbital_map]
@@ -32,21 +32,28 @@ def checksum(orbital_map):
 
     return out
 
-ans = checksum(map_data)
-print(ans[0])
 
-def recursive_len(item):
+def checksum(item):
     if type(item) == list:
-        return sum(recursive_len(subitem) for subitem in item)
+        return sum(checksum(subitem) for subitem in item)
 
     else:
         return 1
 
 
-'''
-for i, relationship[0] in enumerate(map_data):
-    if relationship.split(')')[1] == 'SAN' or relationship.split(')')[1] == 'YOU':
-        print(i)
+system = generate_system(map_data)
+print(checksum(system))
 
-print(set(map_data[611]) & set(map_data[861]))
-'''
+
+# planet YOU/SAN's can be found be searching for the planet in the list of lists
+for i, path in enumerate(system):
+    first_element = path[0].split(')')[1]
+    if 'YOU' in first_element:
+        YOU = i
+
+    elif 'SAN' in first_element:
+        SAN = i
+
+# len(YOU) + len(SAN) - 2*LCA - 2
+#  LCA = lost common ancestor 
+print(len(system[YOU])+len(system[SAN])-2*len(set(system[YOU]) & set(system[SAN]))-2)
