@@ -1,4 +1,5 @@
 import random
+import math
 
 with open('day1.txt') as f:
     puzzle_input = f.read()
@@ -16,4 +17,4 @@ for expense in expense_report:
 while sum(random3 := random.sample(expense_report, 3)) != 2020:
     pass
 
-print(random3[0] * random3[1] * random3[2])
+print(math.prod(random3))
